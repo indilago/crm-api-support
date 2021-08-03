@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "declaration": true,
+    "target": "ES5",
+    "lib": ["ESNext"],
+    "sourceMap": true,
+    "outDir": "dist",
+    "moduleResolution": "Node",
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true
+  },
+  "include": [
+    "src/**/*"
+  ]
+}
