@@ -1,6 +1,7 @@
 export * from './address'
 export * from './custom-fields'
 export * from './customers/customer'
+export * from './customers/submission'
 export * from './sales/quotes'
 export * from './membership/org'
 export * from './membership/user'
