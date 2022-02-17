@@ -11,10 +11,10 @@ export interface IOrg {
 }
 
 export interface IOrgDetails extends IOrg {
-  addresses: IAddress[]
+  address?: IAddress
 }
 
-export interface UpdateOrgInput {
+export interface IUpdateOrgInput {
   name?: string
   active?: boolean
   subdomain?: string
@@ -22,7 +22,7 @@ export interface UpdateOrgInput {
   address?: IUpdateAddressInput
 }
 
-export interface CreateOrgInput {
+export interface ICreateOrgInput {
   name: string
   subdomain?: string
 }
