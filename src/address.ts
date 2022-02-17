@@ -43,7 +43,7 @@ export class Point implements IPoint {
   lng: number
 }
 
-interface IUpdateAddressInput {
+export interface IUpdateAddressInput {
   primary?: boolean
   label?: string
   street?: string[]
