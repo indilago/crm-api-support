@@ -16,13 +16,14 @@ export interface IAddress {
     id: number,
   }
   isPrimary: boolean
-  label: string
+  label?: string
   street: string[]
-  city: string
-  postalCode: string
-  province: string
-  country: string
-  coordinates?: Point
+  unit?: string
+  city?: string
+  postalCode?: string
+  province?: string
+  country?: string
+  coordinates?: IPoint
 }
 
 export interface IPoint {
@@ -47,10 +48,12 @@ export interface IUpdateAddressInput {
   primary?: boolean
   label?: string
   street?: string[]
+  unit?: string
   city?: string
   postalCode?: string
   province?: string
   country?: string
+  coordinates?: IPoint
 }
 
 export class UpdateAddressInput implements IUpdateAddressInput {
@@ -63,6 +66,9 @@ export class UpdateAddressInput implements IUpdateAddressInput {
   
   @IsOptional()
   street?: string[]
+  
+  @IsOptional()
+  unit?: string
   
   @IsOptional()
   city?: string
@@ -81,6 +87,7 @@ export interface ICreateAddressInput {
   primary?: boolean
   label?: string
   street?: string[]
+  unit?: string
   city?: string
   postalCode?: string
   province?: string
@@ -97,6 +104,9 @@ export class CreateAddressInput implements ICreateAddressInput {
   
   @IsOptional()
   street?: string[]
+  
+  @IsOptional()
+  unit?: string
   
   @IsOptional()
   city?: string
