@@ -9,7 +9,7 @@ export enum AddressableType {
 }
 
 export interface IAddress {
-  id: number
+  id: AddressId
   orgId: number
   subject: {
     type: AddressableType,
@@ -53,7 +53,6 @@ export interface IUpdateAddressInput {
   postalCode?: string
   province?: string
   country?: string
-  coordinates?: IPoint
 }
 
 export class UpdateAddressInput implements IUpdateAddressInput {
@@ -120,3 +119,5 @@ export class CreateAddressInput implements ICreateAddressInput {
   @IsOptional()
   country?: string
 }
+
+export type AddressId = number

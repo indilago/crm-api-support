@@ -3,10 +3,7 @@ export interface ILeadSubmissionInput {
   collectionDate?: string
   leads: ILeadInput[]
 }
-export interface LeadSubmissionInput {
-  collectionDate: Date
-  leads: ILeadInput[]
-}
+
 export interface ILeadInput {
   name: string
   phone?: string
@@ -18,12 +15,24 @@ export interface ILeadInput {
 }
 
 export interface ILeadSubmissionCreateResponse {
-  leadSubmission: {
-    id: number
-    company_id: number
-    user_id: number
-    session_date: Date
-    session_start?: Date
-    session_end?: Date
-  }
+  submission: ISubmission
+}
+
+export interface ISubmission {
+  id: number
+  orgId: number
+  collectionDate: Date
+  sessionStart?: Date
+  sessionEnd?: Date
+  submitterUserId: number
+  submitterName: string
+  leadsCount: number
+}
+
+export interface IListSubmissionsResponse {
+  submissions: ISubmission[]
+}
+
+export interface ILeadSubmissionResponse {
+  submission: ISubmission
 }

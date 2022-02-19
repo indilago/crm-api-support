@@ -10,19 +10,11 @@ import {
   MaxLength, ValidateIf,
   ValidateNested,
 } from 'class-validator'
+import {Grade} from '../leads'
 
 interface IPhoneNumber {
   label?: string
   number: string
-}
-
-export enum Grade {
-  A = 'A',
-  B = 'B',
-  C = 'C',
-  D = 'D',
-  E = 'E',
-  F = 'F',
 }
 
 class PhoneNumber implements IPhoneNumber {
@@ -43,31 +35,33 @@ export interface ICustomer {
   id: number
   createdAt: Date
   updatedAt: Date
-  readonly displayName: string // Coalesced name/company name
-  companyName: string
+  displayName: string // Coalesced name/company name
+  companyName?: string
   name: string
-  title: string
-  firstName: string
-  lastName: string
-  phoneNumbers: IPhoneNumber[]
-  email: string
-  readonly addresses: IAddress[]
+  title?: string
+  phone?: string
+  homePhone?: string
+  mobilePhone?: string
+  businessPhone?: string
+  faxNumber?: string
+  email?: string
+  addresses: IAddress[]
   assignedUser?: {
     id: number,
     name: string
   }
-  status: {
+  status?: {
     id: number
     name: string
   }
-  stage: {
+  stage?: {
     name: string
   }
   source?: {
     id: number
     name: string
   }
-  createdByUserId: number
+  createdByUserId?: number
   website?: string
   position?: string
   notes?: string
@@ -80,9 +74,13 @@ export interface ICreateCustomerInput {
   companyName?: string
   name?: string
   title?: string
-  phoneNumbers?: IPhoneNumber[]
+  phone?: string
+  homePhone?: string
+  mobilePhone?: string
+  businessPhone?: string
+  faxNumber?: string
   email?: string
-  readonly addresses: ICreateAddressInput[]
+  addresses: ICreateAddressInput[]
   assignedUserId?: number
   statusId?: number
   sourceId?: number
@@ -99,7 +97,11 @@ export class CreateCustomerInput implements ICreateCustomerInput {
     this.companyName = input.companyName
     this.name = input.name
     this.title = input.title
-    this.phoneNumbers = input.phoneNumbers || []
+    this.phone = input.phone
+    this.homePhone = input.homePhone
+    this.mobilePhone = input.mobilePhone
+    this.businessPhone = input.businessPhone
+    this.faxNumber = input.faxNumber
     this.email = input.email
     this.addresses = input.addresses
     this.assignedUserId = input.assignedUserId
@@ -122,9 +124,19 @@ export class CreateCustomerInput implements ICreateCustomerInput {
   title?: string
   
   @IsOptional()
-  @ValidateNested()
-  @ArrayMaxSize(5)
-  phoneNumbers: PhoneNumber[]
+  phone?: string
+  
+  @IsOptional()
+  homePhone?: string
+  
+  @IsOptional()
+  mobilePhone?: string
+  
+  @IsOptional()
+  businessPhone?: string
+  
+  @IsOptional()
+  faxNumber?: string
   
   @IsOptional()
   @IsEmail()
