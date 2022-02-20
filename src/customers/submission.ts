@@ -48,7 +48,7 @@ export interface ILeadSubmissionResponse {
 export interface ISubmissionLead {
   id: number|string
   name: string
-  address?: Omit<ILead['primaryAddress'], 'id'>
+  address?: ILead['primaryAddress']
   phone?: string
   email?: string
 }
