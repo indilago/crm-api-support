@@ -1,7 +1,9 @@
 
 export interface ILeadSubmissionInput {
-  collectionDate?: string
-  leads: ILeadInput[]
+  collectionDate: string
+  city: string
+  province?: string
+  notes?: string
 }
 
 export interface ILeadInput {
@@ -10,8 +12,6 @@ export interface ILeadInput {
   email?: string
   address?: string
   notes?: string
-  city?: string
-  province?: string
 }
 
 export interface ILeadSubmissionCreateResponse {
@@ -20,13 +20,17 @@ export interface ILeadSubmissionCreateResponse {
 
 export interface ISubmission {
   id: number
+  createdAt: Date
   orgId: number
   collectionDate: Date
+  city: string
+  province?: string
   sessionStart?: Date
   sessionEnd?: Date
   submitterUserId: number
   submitterName: string
   leadsCount: number
+  notes?: string
 }
 
 export interface IListSubmissionsResponse {
