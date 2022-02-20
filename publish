@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+
+for el in major minor patch premajor preminor prepatch prelease ; do
+    if [ "$el" = "$1" ] ; then
+        bumpType="$el"
+    fi
+done
+
+[ -z "$bumpType" ] && {
+  echo "Need to specify a version bump type (major/minor/patch/...)"
+  exit 1
+}
+
+rm -rf dist
+npm run build
+cd dist
+npm version $bumpType -m "Version bump to %s"
+npm publish --dry-run

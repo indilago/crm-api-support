@@ -2,7 +2,6 @@
   "name": "@indilago/crm-api-support",
   "version": "0.1.1",
   "description": "Provides the models and interfaces common between the CRM API and its clients.",
-  "files": ["dist/**/*"],
   "main": "index.js",
   "scripts": {
     "build": "tsc",
