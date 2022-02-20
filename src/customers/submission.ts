@@ -46,6 +46,7 @@ export interface ILeadSubmissionResponse {
 
 // Expose only the attributes we accept as input
 export interface ISubmissionLead {
+  id: number|string
   name: string
   address?: Omit<ILead['primaryAddress'], 'id'>
   phone?: string
