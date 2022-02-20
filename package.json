@@ -1,8 +1,9 @@
 {
   "name": "@indilago/crm-api-support",
-  "version": "0.0.9",
+  "version": "0.1.1",
   "description": "Provides the models and interfaces common between the CRM API and its clients.",
-  "main": "dist/index.js",
+  "files": ["dist/**/*"],
+  "main": "index.js",
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
